@@ -1,0 +1,35 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: srodrigu <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/07/26 21:19:46 by srodrigu          #+#    #+#              #
+#    Updated: 2016/07/26 21:19:47 by srodrigu         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#-*- Makefile -*-
+
+NAME = libft.a
+
+SRC = srcs/ft_putchar.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strlen.c \
+srcs/ft_swap.c
+
+HEADER = includes/
+
+all: $(NAME)
+
+$(NAME):
+	gcc -c -Wall -Wextra -Werror $(SRC) -I$(HEADER)
+	ar rc $(NAME) ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
+	ranlib $(NAME)
+
+clean:
+	/bin/rm -rf ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
+
+fclean: clean
+	/bin/rm -f $(NAME)
+
+re: fclean $(NAME)
